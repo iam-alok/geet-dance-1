@@ -1,0 +1,342 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Reset and Global Config */
+:root {
+  --color-bg: #050505;
+  --color-bg-darker: #020202;
+  --color-cyan: #00f0ff;
+  --color-magenta: #ff007f;
+  --color-violet: #7b2cbf;
+  --color-white: #ffffff;
+  
+  --font-outfit: 'Outfit', sans-serif;
+  --font-poppins: 'Poppins', sans-serif;
+  --font-serif: 'Instrument Serif', serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-white);
+  font-family: var(--font-outfit);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--color-magenta) 0%, var(--color-cyan) 100%);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--color-cyan) 0%, var(--color-magenta) 100%);
+}
+
+/* Premium Typography Helper Classes */
+.font-outfit { font-family: var(--font-outfit); }
+.font-poppins { font-family: var(--font-poppins); }
+.font-serif { font-family: var(--font-serif); }
+
+/* Glassmorphism Design System */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5),
+              inset 0 1px 1px 0 rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.glass-card-hover:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.7),
+              inset 0 1px 1px 0 rgba(255, 255, 255, 0.1);
+  transform: translateY(-4px);
+}
+
+.glass-navbar {
+  background: rgba(5, 5, 5, 0.7);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glass-button {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+  color: #fff;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.glass-button:hover::before {
+  left: 100%;
+}
+
+.glass-button:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 20px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Neon Borders & Glows */
+.neon-border-cyan {
+  border-color: rgba(0, 240, 255, 0.25);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.15),
+              inset 0 0 10px rgba(0, 240, 255, 0.05);
+}
+
+.neon-border-magenta {
+  border-color: rgba(255, 0, 127, 0.25);
+  box-shadow: 0 0 15px rgba(255, 0, 127, 0.15),
+              inset 0 0 10px rgba(255, 0, 127, 0.05);
+}
+
+.neon-border-violet {
+  border-color: rgba(123, 44, 191, 0.25);
+  box-shadow: 0 0 15px rgba(123, 44, 191, 0.15),
+              inset 0 0 10px rgba(123, 44, 191, 0.05);
+}
+
+.neon-glow-cyan {
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.5), 0 0 20px rgba(0, 240, 255, 0.2);
+}
+
+.neon-glow-magenta {
+  text-shadow: 0 0 10px rgba(255, 0, 127, 0.5), 0 0 20px rgba(255, 0, 127, 0.2);
+}
+
+/* Ambient Animated Gradients */
+.bg-ambient-gradient {
+  background: radial-gradient(circle at 10% 20%, rgba(123, 44, 191, 0.15) 0%, transparent 40%),
+              radial-gradient(circle at 90% 80%, rgba(0, 240, 255, 0.12) 0%, transparent 40%),
+              radial-gradient(circle at 50% 50%, rgba(255, 0, 127, 0.08) 0%, transparent 50%);
+}
+
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.45;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  animation: floatOrb 25s infinite alternate ease-in-out;
+}
+
+@keyframes floatOrb {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(10vw, 15vh) scale(1.2);
+  }
+  100% {
+    transform: translate(-10vw, -10vh) scale(0.8);
+  }
+}
+
+/* Interactive Cursor Tracking Light */
+.cursor-follow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.07) 0%, rgba(255, 0, 127, 0.04) 40%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: screen;
+  display: none;
+}
+
+@media (pointer: fine) {
+  .cursor-follow {
+    display: block;
+  }
+}
+
+/* Parallax and Stacked Components */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+/* Interactive 3D Stacked Image Effect */
+.stacked-image-container {
+  position: relative;
+  width: 100%;
+  height: 450px;
+  perspective: 1000px;
+}
+
+.stacked-image {
+  position: absolute;
+  border-radius: 12px;
+  transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+.stacked-image-1 {
+  width: 80%;
+  height: 80%;
+  z-index: 3;
+  top: 10%;
+  left: 10%;
+  transform: translateZ(50px) rotateY(-5deg);
+}
+
+.stacked-image-2 {
+  width: 70%;
+  height: 70%;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  transform: translateZ(20px) rotateY(10deg);
+  opacity: 0.6;
+}
+
+.stacked-image-3 {
+  width: 75%;
+  height: 75%;
+  z-index: 1;
+  bottom: 0;
+  right: 0;
+  transform: translateZ(-20px) rotateY(-10deg);
+  opacity: 0.45;
+}
+
+.stacked-image-container:hover .stacked-image-1 {
+  transform: translateZ(80px) rotateY(0deg) scale(1.05);
+}
+
+.stacked-image-container:hover .stacked-image-2 {
+  transform: translateZ(40px) rotateY(5deg) translate(-5%, -5%);
+  opacity: 0.8;
+}
+
+.stacked-image-container:hover .stacked-image-3 {
+  transform: translateZ(10px) rotateY(-5deg) translate(5%, 5%);
+  opacity: 0.7;
+}
+
+/* Ken Burns Animated Slide Effect for Backgrounds */
+.ken-burns {
+  animation: kenBurnsBg 20s infinite alternate ease-in-out;
+}
+
+@keyframes kenBurnsBg {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  100% {
+    transform: scale(1.1) translate(-2%, -1%);
+  }
+}
+
+/* Floating Custom Animation */
+.animate-float-slow {
+  animation: floatSlow 6s infinite ease-in-out;
+}
+
+.animate-float-medium {
+  animation: floatMedium 4.5s infinite ease-in-out;
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(1deg); }
+}
+
+@keyframes floatMedium {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(-1deg); }
+}
+
+/* Pulse Music Wave Animation */
+.music-wave-bar {
+  display: inline-block;
+  width: 3px;
+  height: 20px;
+  background-color: var(--color-cyan);
+  margin: 0 2px;
+  border-radius: 2px;
+  animation: waveBounce 1.2s infinite ease-in-out alternate;
+}
+
+@keyframes waveBounce {
+  0% { height: 5px; background-color: var(--color-magenta); }
+  100% { height: 35px; background-color: var(--color-cyan); }
+}
+
+/* Stagger animations for wave bars */
+.music-wave-bar:nth-child(1) { animation-delay: 0.1s; }
+.music-wave-bar:nth-child(2) { animation-delay: 0.3s; }
+.music-wave-bar:nth-child(3) { animation-delay: 0.2s; }
+.music-wave-bar:nth-child(4) { animation-delay: 0.6s; }
+.music-wave-bar:nth-child(5) { animation-delay: 0.4s; }
+.music-wave-bar:nth-child(6) { animation-delay: 0.8s; }
+
+/* Cinematic Loader Effect */
+.line-draw-accent {
+  position: relative;
+  overflow: hidden;
+}
+.line-draw-accent::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-cyan), var(--color-magenta), transparent);
+  animation: animateDivider 3s infinite linear;
+}
+
+@keyframes animateDivider {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
